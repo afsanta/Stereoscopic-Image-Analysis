@@ -17,7 +17,7 @@ const connection = mysql.createConnection({
 
 connection.connect(function(err) {
 	if (err) throw err;
-	console.log("Connected");
+	console.log("Connected!");
 });
 // Resolves root path
 const root_path = path.resolve(__dirname + '/../');
@@ -27,7 +27,7 @@ const index_path = root_path + '/html/index.html';
 
 // Route for index
 app.get('/', (req, res) => {
-	console.log(db.host)
+	//console.log(con.host)
 	res.sendFile(index_path);
 });
 
