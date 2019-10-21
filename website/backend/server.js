@@ -3,8 +3,12 @@ const config = require('./config');
 
 // Import packages
 const express = require('express');
-const mysql = require("mysql");
+const multer = require('multer');
+const ejs = require('ejs')
+const mysql = require('mysql');
 const path = require('path');
+
+// Initialize appm  
 const app = express();
 
 // Import database connection string
@@ -21,9 +25,14 @@ connection.connect(function(err) {
 });
 // Resolves root path
 const root_path = path.resolve(__dirname + '/../');
+const frontend_path = path.resolve(__dirname + '/../frontend');
 
 // Creates file paths
 const index_path = root_path + '/html/index.html';
+
+//
+app.set('view engine', 'ejs');
+app.set(express.static('./public'));
 
 // Route for index
 app.get('/', (req, res) => {
